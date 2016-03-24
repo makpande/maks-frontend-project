@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-App="maksBlocTime">
+<html ng-app="maksBlocTime" ng-controller="MainCtrl">
 <head lang="en">
     <meta charset="UTF-8">
     <title>Bloc Base Project</title>
@@ -10,19 +10,32 @@
 </head>
 <body>
 
-	<div ui-view> </div>
+	<ui-view> </ui-view>
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-3">
+            <div class="col-md-9 text-center center">
+              <div class="time-field"> {{ time | timecode }}</div>
+              <a type="button" class="btn btn-primary" ng-click="startReset()">{{taskName}}</a> <br/>
+            </div>
+
+      </div>
+  </div>
 
 
   <!-- Angular-->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.js"></script>
-  <!-- Firebase -->
-  <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
-  <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.js"></script>
-  <!-- App Specific-->
-  <script src="/scripts/app.js"></script>
-  <script src="/scripts/controllers/MainCtrl.js"></script>
-  <script scr="/scripts/filters/timecode.js"></script>
-  <script src="/scripts/directives/timer.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.js"></script>
+     <!-- Firebase -->
+     <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+     <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.js"></script>
+     <!-- App Specific-->
+     <script src="/scripts/app.js"></script>
+     <script src="/scripts/filters/timecode.js"></script>
+     <script src="/scripts/controllers/MainCtrl.js"></script>
+
+
+
+
 </body>
 </html>

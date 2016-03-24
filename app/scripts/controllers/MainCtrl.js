@@ -1,9 +1,11 @@
-(function () {
-    function MainCtrl($interval) {
-        console.log('Starting MainCtrl');
-      }
-
-      angular
-            .module('maksBlocTime')
-            .controller('MainCtrl', ['$interval', MainCtrl]);
-    })();
+// (function () {
+//     function MainCtrl($scope, $interval) {
+//
+//
+//       }
+//
+//
+//     angular
+//         .module('maksBlocTime')
+//         .controller('MainCtrl', ['$interval', '$scope', MainCtrl]);
+// })();

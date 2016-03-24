@@ -5,8 +5,9 @@ body {
 }
 
 .time-field{
-   font-size: 72px;
+   font-size: 30px;
 }
-.vcenter {
-    margin-top: 40%;
+
+.center {
+    margin-top: 25%;
 }
