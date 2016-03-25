@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="maksBlocTime" ng-controller="MainCtrl">
+<html ng-app="maksBlocTime">
 <head lang="en">
     <meta charset="UTF-8">
     <title>Bloc Base Project</title>
@@ -11,16 +11,7 @@
 <body>
 
 	<ui-view> </ui-view>
-  <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-3">
-            <div class="col-md-9 text-center center">
-              <div class="time-field"> {{ time | timecode }}</div>
-              <a type="button" class="btn btn-primary" ng-click="startReset()">{{taskName}}</a> <br/>
-            </div>
 
-      </div>
-  </div>
 
 
   <!-- Angular-->
