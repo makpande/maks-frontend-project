@@ -1,22 +1,36 @@
 (function () {
 
     function MainCtrl($scope, $interval) {
-      console.log("main");
       var myDataRef = new Firebase('https://maksbloctime.firebaseio.com/');
-      $scope.time = (60*25);
-
-      $scope.taskName = 'Start';
-
+      var work_session = (60*25);
+      var break_session = (60*5);
       var stop;
+
+      $scope.time = work_session;
+      $scope.taskName = 'Start';
+      $scope.onBreak = false;
+
 
       $scope.countdown = function() {
 
-        if ( angular.isDefined(stop) ) return;
+          if ( angular.isDefined(stop) ) return;
 
-        stop = $interval(function() {
-          $scope.time -= 1;
+          stop = $interval(function() {
+            if ($scope.time > 0) {
+              $scope.time -= 1;
+          } else {
+            $scope.stopTime();
+            if (!$scope.onBreak){
+              $scope.onBreak = true;
+              $scope.taskName = 'Break';
+              $scope.time = break_session;
+            } else {
+              $scope.onBreak = false;
+              $scope.taskName = 'Start';
+              $scope.time = work_session;
+            }
+          }
         }, 1000);
-
         $scope.taskName = 'Reset';
       };
 
@@ -25,24 +39,32 @@
           $interval.cancel(stop);
           stop = undefined;
         }
-        $scope.taskName = 'Start';
+
+        if (!$scope.onBreak){
+          $scope.taskName = 'Start';
+        } else {
+          $scope.taskName = 'Break';
+        }
       };
 
       $scope.reset = function() {
         $scope.stopTime();
-        $scope.time = (60*25);
+        if (!$scope.onBreak) {
+          $scope.time = work_session;
+        } else {
+          $scope.time = break_session;
+        }
       };
 
       $scope.startReset = function() {
-        if ($scope.taskName == 'Start' ){
+        if ($scope.taskName == 'Start' || $scope.taskName == 'Break'){
           $scope.countdown();
-        }
-        else{
+        } else {
           $scope.reset();
         }
       };
 
-      }
+    }
 
 
     angular
