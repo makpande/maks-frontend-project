@@ -2,8 +2,8 @@
 
     function MainCtrl($scope, $interval) {
       var myDataRef = new Firebase('https://maksbloctime.firebaseio.com/');
-      var work_session = (60*3);
-      var break_session = (60*2);
+      var work_session = (60*25);
+      var break_session = (60*5);
       var stop;
 
       $scope.time = work_session;
