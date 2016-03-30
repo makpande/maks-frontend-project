@@ -4,8 +4,8 @@
       var myDataRef = new Firebase('https://maksbloctime.firebaseio.com/');
 
 
-      var work_session = (60*25);
-      var break_session = (60*5);
+      var work_session = (30);
+      var break_session = (5);
       var stop;
 
       $scope.time = work_session;
@@ -13,16 +13,19 @@
       $scope.onBreak = false;
       $scope.numSessions = 0;
 
+      var mySound = new buzz.sound( "/assets/sounds/ding.mp3", {
+          preload: true
+        });
 
       $scope.takeBreak = function() {
         $scope.onBreak = true;
         $scope.taskName = 'Break';
         $scope.numSessions++;
         console.log($scope.numSessions);
-        if ($scope.numSessions % 4 = 0) {
-          break_session = (60*30);
+        if ($scope.numSessions % 4 == 0) {
+          break_session = (30);
         } else {
-          break_session = (60*5);
+          break_session = (5);
         }
         $scope.time = break_session;
       };
@@ -32,6 +35,13 @@
         $scope.taskName = 'Start';
         $scope.time = work_session;
       };
+
+      // sometimes referred to as a "watcher"
+      $scope.$watch('time', function(clockTime) {
+         if (clockTime == 0){
+           mySound.play();
+         }
+      });
 
       $scope.countdown = function() {
 
