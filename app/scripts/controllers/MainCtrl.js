@@ -2,6 +2,8 @@
 
     function MainCtrl($scope, $interval) {
       var myDataRef = new Firebase('https://maksbloctime.firebaseio.com/');
+
+
       var work_session = (60*25);
       var break_session = (60*5);
       var stop;
@@ -9,7 +11,27 @@
       $scope.time = work_session;
       $scope.taskName = 'Start';
       $scope.onBreak = false;
+      $scope.numSessions = 0;
 
+
+      $scope.takeBreak = function() {
+        $scope.onBreak = true;
+        $scope.taskName = 'Break';
+        $scope.numSessions++;
+        console.log($scope.numSessions);
+        if ($scope.numSessions % 4 = 0) {
+          break_session = (60*30);
+        } else {
+          break_session = (60*5);
+        }
+        $scope.time = break_session;
+      };
+
+      $scope.startSession = function() {
+        $scope.onBreak = false;
+        $scope.taskName = 'Start';
+        $scope.time = work_session;
+      };
 
       $scope.countdown = function() {
 
@@ -21,13 +43,9 @@
           } else {
             $scope.stopTime();
             if (!$scope.onBreak){
-              $scope.onBreak = true;
-              $scope.taskName = 'Break';
-              $scope.time = break_session;
+              $scope.takeBreak();
             } else {
-              $scope.onBreak = false;
-              $scope.taskName = 'Start';
-              $scope.time = work_session;
+              $scope.startSession();
             }
           }
         }, 1000);
