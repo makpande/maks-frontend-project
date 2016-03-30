@@ -4,8 +4,8 @@
       var myDataRef = new Firebase('https://maksbloctime.firebaseio.com/');
 
 
-      var work_session = (60*25);
-      var break_session = (60*5);
+      var work_session = (30);
+      var break_session = (5);
       var stop;
 
       $scope.time = work_session;
@@ -19,10 +19,10 @@
         $scope.taskName = 'Break';
         $scope.numSessions++;
         console.log($scope.numSessions);
-        if ($scope.numSessions % 4 = 0) {
-          break_session = (60*30);
+        if ($scope.numSessions % 4 == 0) {
+          break_session = (30);
         } else {
-          break_session = (60*5);
+          break_session = (5);
         }
         $scope.time = break_session;
       };
