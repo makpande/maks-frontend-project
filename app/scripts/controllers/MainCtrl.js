@@ -19,7 +19,7 @@
         $scope.taskName = 'Break';
         $scope.numSessions++;
         console.log($scope.numSessions);
-        if ($scope.numSessions % 4 = 0) {
+        if ($scope.numSessions % 4 == 0) {
           break_session = (60*30);
         } else {
           break_session = (60*5);
