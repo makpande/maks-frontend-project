@@ -13,6 +13,9 @@
       $scope.onBreak = false;
       $scope.numSessions = 0;
 
+      var mySound = new buzz.sound( "/assets/sounds/ding.mp3", {
+          preload: true
+        });
 
       $scope.takeBreak = function() {
         $scope.onBreak = true;
@@ -32,6 +35,13 @@
         $scope.taskName = 'Start';
         $scope.time = work_session;
       };
+
+      // sometimes referred to as a "watcher"
+      $scope.$watch('time', function(clockTime) {
+         if (clockTime == 0){
+           mySound.play();
+         }
+      });
 
       $scope.countdown = function() {
 
