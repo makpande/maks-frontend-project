@@ -8,8 +8,8 @@
         $scope.name = "";
       }
 
-      $scope.removeTask = function() {
-        Tasks.delete($scope.name);
+      $scope.removeTask = function($index) {
+        Tasks.delete($index);
       }
 
       var work_session = (30);

@@ -14,9 +14,8 @@
 
     },
 
-    delete: function(task) {
-      console.log(task);
-      return tasks.$remove(task);
+    delete: function(index) {
+      return tasks.$remove(index, 1);
     },
 
     all: function() {

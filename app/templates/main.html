@@ -13,7 +13,7 @@
 
         <div>
           <li ng-repeat="task in tasks | orderBy: 'date'">{{ task.name }}
-              <a style="text-align:right; padding-left: 80%;" href=""  ng-click="removeTask(tasks)" >Remove</a>
+              <a ng-repeat="task in tasks" style="text-align:right; padding-left: 80%;" href=""  ng-click="removeTask($index)" >Remove</a>
           </li>
         </div>
       </div>
