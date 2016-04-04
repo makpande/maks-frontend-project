@@ -5,9 +5,24 @@ body {
 }
 
 .time-field{
-   font-size: 30px;
+   font-size: 40px;
+}
+
+#taskInput {
+  margin-bottom: 5px;
 }
 
 .center {
-    margin-top: 25%;
+    margin-top: 15%;
+}
+
+li {
+  background: lightgray;
+  height: 40px;
+  padding-left: 5px;
+  
+}
+
+li:nth-child(odd) {
+  background: #B0B0B0;
 }

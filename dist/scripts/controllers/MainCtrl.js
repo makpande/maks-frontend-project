@@ -1,8 +1,16 @@
 (function () {
 
-    function MainCtrl($scope, $interval) {
-      var myDataRef = new Firebase('https://maksbloctime.firebaseio.com/');
+    function MainCtrl($scope, $interval, Tasks) {
 
+      $scope.tasks = Tasks.all();
+      $scope.addTask = function() {
+        Tasks.add($scope.name);
+        $scope.name = "";
+      }
+
+      $scope.removeTask = function() {
+        Tasks.delete($scope.name);
+      }
 
       var work_session = (30);
       var break_session = (5);
@@ -12,6 +20,7 @@
       $scope.taskName = 'Start';
       $scope.onBreak = false;
       $scope.numSessions = 0;
+
 
       var mySound = new buzz.sound( "/assets/sounds/ding.mp3", {
           preload: true
@@ -23,6 +32,7 @@
         $scope.numSessions++;
         console.log($scope.numSessions);
         if ($scope.numSessions % 4 == 0) {
+
           break_session = (30);
         } else {
           break_session = (5);
@@ -75,6 +85,7 @@
         }
       };
 
+
       $scope.reset = function() {
         $scope.stopTime();
         if (!$scope.onBreak) {
@@ -91,11 +102,8 @@
           $scope.reset();
         }
       };
-
-    }
-
-
+}
     angular
         .module('maksBlocTime')
-        .controller('MainCtrl', ['$scope', '$interval',  MainCtrl]);
+        .controller('MainCtrl', ['$scope', '$interval', 'Tasks', MainCtrl]);
 })();
