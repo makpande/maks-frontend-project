@@ -9,7 +9,7 @@
       add: function(task) {
         tasks.$add({
             name: task,
-
+            date: Firebase.ServerValue.TIMESTAMP
         });
 
     },
