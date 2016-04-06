@@ -20,7 +20,11 @@ li {
   background: lightgray;
   height: 40px;
   padding-left: 5px;
-  
+
+}
+
+.remove {
+  text-align: right;
 }
 
 li:nth-child(odd) {

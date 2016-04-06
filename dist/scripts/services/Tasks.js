@@ -15,7 +15,7 @@
     },
 
     delete: function(index) {
-      return tasks.$remove(index, 1);
+      return tasks.$remove(index);
     },
 
     all: function() {

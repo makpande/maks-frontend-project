@@ -10,6 +10,7 @@
 
       $scope.removeTask = function($index) {
         Tasks.delete($index);
+        console.log($index);
       }
 
       var work_session = (30);
