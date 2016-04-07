@@ -8,9 +8,9 @@
         $scope.name = "";
       }
 
-      $scope.removeTask = function($index) {
-        Tasks.delete($index);
-        console.log($index);
+      $scope.removeTask = function(task) {
+        Tasks.delete(task);
+        console.log(task);
       }
 
       var work_session = (30);

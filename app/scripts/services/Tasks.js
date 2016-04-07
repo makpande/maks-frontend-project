@@ -2,7 +2,6 @@
   function Tasks($firebaseArray) {
     var ref = new Firebase('https://maksbloctime.firebaseio.com/');
 
-    // download tasks into a synchronized array
     var tasks = $firebaseArray(ref);
 
     return {
@@ -14,8 +13,8 @@
 
     },
 
-    delete: function(index) {
-      return tasks.$remove(index);
+    delete: function(task) {
+      return tasks.$remove(task);
     },
 
     all: function() {
